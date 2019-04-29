@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>포폴디테일</h1>
+
+<div class="container-fluid d-flex justify-content-center">
+        
+    <div class="main col-4">
+        <p>제목 : {{portfolio.title}}</p>
+        <p><img src="{{ portfolio.image.url }}" alt="" width=500 height=auto></p>
+        <p>설명 : {{portfolio.description}}</p>
+    </div>
+
+</div>
+
+{% endblock %}

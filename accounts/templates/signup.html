@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if error %}
+{{error}}
+<br><br>
+{% endif %}
+
+
+<h1>회원가입</h1>
+<form action="{% url 'signup' %}" method="POST">
+
+    <!--csrf는 말하자면 perpetrator(가해자)가 당기는 사람 (website visitor)총구가 자기를 겨눈 총의 방아쇠인지 모르게 하고 그걸 당기게하는 것-->
+    {% csrf_token %}
+
+    아이디 :
+    <br>
+    <input type="text" name="username" value="">
+    <br>
+    패스워드 :
+    <br>
+    <input type="password" name="password1" value="">
+    <br>
+    패스워드 확인 : 
+    <br>
+    <input type="password" name="password2" value="">
+    <br>
+    <input type="submit" value="가입하기">
+</form>
+
+{% endblock %}
