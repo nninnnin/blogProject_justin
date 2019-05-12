@@ -25,15 +25,21 @@
         <li class="nav-item pl-3">
           <a class="nav-link" href="{% static '수료증.pdf' %}">수료증</a>
         </li>
+        <li class="nav-item pl-3">
+          <a class="nav-link" href="{% url 'new' %}">글쓰기</a>
+        </li>
 
         {% if user.is_authenticated %}
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown show">
 
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href=""> 환영합니다! {{user.username}} 님 </a>
+          <a class="btn btn-primary dropdown-toggle" id="dropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+           환영합니다! {{user.username}} 님 
+          </a>
 
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" href="{% url 'new' %}">글쓰기</a>
             <a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+
             <form id="logout" method="POST" action="{% url 'logout' %}">
               {% csrf_token %}
               <input type="hidden">
@@ -42,7 +48,7 @@
 
         </li>
         {% else %}
-        <li class="nav-item">
+        <li class="nav-item dropdown show">
           <a href="{% url 'signup' %}" class="nav-item nav-link">회원가입</a>
         </li>
         <li class="nav-item">
@@ -50,12 +56,6 @@
         </li>
         {% endif %}
 
-        <li class="nav-item pl-3">
-          <a class="nav-link" href="{% url 'signup' %}">회원가입</a>
-        </li>
-        <li class="nav-item pl-3">
-          <a class="nav-link" href="{% url 'login' %}">로그인</a>
-        </li>
       </ul>
     </div>
 </nav>
